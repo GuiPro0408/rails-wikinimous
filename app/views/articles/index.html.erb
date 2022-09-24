@@ -1,0 +1,11 @@
+<h1 class = "text-center mb-5">Articles</h1>
+
+<% @articles.each do |article| %>
+  <div class="card mb-5 w-50 m-auto rounded shadow-sm p-1 bg-dark">
+    <div class="card-body">
+      <h3 class="card-title mb-3"><%= link_to(article.title, article_path(article), class: 'text-white fw-bold') %></h3>
+      <p class="card-text text-white"><%= article.content.split(". ").first(5).join(' ') %>.</p>
+      <%= link_to '<i class="fa-solid fa-trash"></i> Delete'.html_safe, article_path(article), data: {turbo_method: :delete, turbo_confirm: "Are you sure to DELETE ?"}, class: "btn btn-danger"%></li>
+    </div>
+  </div>
+<% end %>
